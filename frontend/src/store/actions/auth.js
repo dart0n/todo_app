@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { API_URL } from '../../config'
-import { setToken, setUser } from '../reducers/authReducer'
+import { logout, setToken, setUser } from '../reducers/authReducer'
 
 export function register(formFields) {
   return async (dispatch) => {
@@ -43,6 +43,7 @@ export const authenticateUser = () => {
       dispatch(setToken(response.data.token))
     } catch (e) {
       dispatch(setToken(null))
+      dispatch(logout())
       localStorage.removeItem('token')
     }
   }

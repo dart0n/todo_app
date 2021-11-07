@@ -10,13 +10,13 @@ import Project from './Project'
 function Home() {
   const dispatch = useDispatch()
   const projects = useSelector((state) => state.projects.projects)
-  const token = useSelector((state) => state.user.token)
 
   useEffect(() => {
+    const token = localStorage.getItem('token')
     if (projects.length === 0 && token) {
       dispatch(getProjects())
     }
-  }, [projects.length, dispatch, token])
+  }, [projects.length, dispatch])
 
   function showPopupHandler() {
     dispatch(setPopupDisplay('flex'))
