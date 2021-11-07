@@ -1,0 +1,51 @@
+@import '../../vars.scss';
+
+.popup {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__create {
+    align-self: flex-end;
+    min-height: 30px;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: $light;
+    background-color: $dark_blue;
+    background: linear-gradient($light_blue, $dark_blue);
+    border: none;
+  }
+
+  &__close {
+    padding: 6px 10px;
+  }
+
+  input {
+    margin: 20px 0;
+    padding: 10px;
+    font-size: 18px;
+  }
+}

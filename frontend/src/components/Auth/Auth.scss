@@ -1,0 +1,58 @@
+@import '../../vars.scss';
+
+.auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    min-width: 300px;
+    text-align: center;
+
+    h1 {
+      padding-bottom: 15px;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    padding-bottom: 20px;
+    color: $font_color;
+    text-align: left;
+  }
+
+  &__input {
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 20px;
+  }
+
+  &__btn_submit {
+    padding: 15px 30px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: $light;
+    background-color: $dark_blue;
+    background: linear-gradient($light_blue, $dark_blue);
+    border: none;
+    cursor: pointer;
+  }
+
+  &__btn {
+    padding: 10px;
+    background: transparent;
+    border: none;
+    color: $dark_blue;
+    cursor: pointer;
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,88 @@
+@import '../../vars.scss';
+
+.project {
+  width: 700px;
+  margin-bottom: 40px;
+
+  &__header {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: $dark_blue;
+    background: linear-gradient($light_blue, $dark_blue);
+
+    .icon {
+      color: #354d72;
+      padding-right: 12px;
+      padding-left: 16px;
+    }
+
+    button {
+      color: #98b0d2;
+      background: transparent;
+      border: none;
+      padding: 0 10px;
+
+      &:hover {
+        color: #fff;
+        cursor: pointer;
+      }
+      &:last-child {
+        padding-right: 18px;
+      }
+    }
+
+    .edit {
+      border-right: solid #5284bf;
+    }
+  }
+
+  &__name {
+    flex-grow: 1;
+    font-size: 18px;
+    font-weight: bold;
+    color: $light;
+  }
+
+  &__name_input {
+    width: 95%;
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: $light;
+    background: transparent;
+  }
+
+  &__new_task {
+    display: flex;
+    align-items: center;
+    background: $grey;
+    border-bottom: 1px solid #aaa;
+    padding: 8px;
+
+    .new_task_input {
+      flex-grow: 1;
+      min-height: 28px;
+      border-radius: 5px 0 0 5px;
+      border: none;
+      font-size: 14px;
+      padding-left: 10px;
+      &::placeholder {
+        color: #bbb;
+      }
+    }
+
+    .icon-plus {
+      color: $dark_green;
+      font-size: 23px;
+      padding-right: 14px;
+    }
+    .green_btn {
+      border-radius: 0 5px 5px 0;
+    }
+  }
+
+  .actions {
+    min-width: 90px;
+  }
+}

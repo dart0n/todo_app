@@ -1,0 +1,109 @@
+@import '../../vars.scss';
+
+.task {
+  display: flex;
+  align-items: stretch;
+  min-height: 48px;
+  background: #fff;
+  border-bottom: 1px solid #e7ebea;
+
+  &:hover {
+    background: $light_yellow;
+  }
+
+  &:last-child {
+    border-radius: 0 0 15px 15px;
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    min-width: 40px;
+    border-right: 1px solid #efdadf;
+  }
+
+  &__text {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    border-left: 1px solid #efdadf;
+    padding-left: 15px;
+    color: $font_color;
+
+    .done {
+      text-decoration: line-through;
+    }
+
+    .important {
+      color: #d1788b;
+    }
+
+    .text_wrapper {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin-right: 5px;
+
+      .text {
+        flex-grow: 1;
+      }
+    }
+
+    .deadline {
+      min-width: 50px;
+      font-size: 14px;
+
+      i {
+        padding: 4px;
+        cursor: pointer;
+      }
+    }
+
+    .datepicker {
+      display: flex;
+      align-items: center;
+
+      i {
+        padding: 8px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__text_input {
+    display: flex;
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 5px 10px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    min-width: 119px;
+    border-left: 1px solid #e7ebea;
+
+    button {
+      position: relative;
+      padding: 10px;
+      color: $font_color;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    button + button {
+      &::before {
+        position: absolute;
+        left: 0;
+        content: '';
+        display: inline-block;
+        background-color: #ccc;
+        width: 1px;
+        height: 15px;
+      }
+    }
+  }
+}

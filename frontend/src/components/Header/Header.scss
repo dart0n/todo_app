@@ -1,0 +1,34 @@
+@import '../../vars.scss';
+
+.header {
+  padding: 60px;
+  text-align: center;
+  color: #333;
+  text-transform: uppercase;
+
+  h1 {
+    font-size: 29px;
+    margin-bottom: 5px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  .btn_logout {
+    position: absolute;
+    top: 1%;
+    right: 5%;
+    padding: 10px;
+    font-size: 18px;
+    color: $font_color;
+    background: transparent;
+    border: none;
+
+    &:hover {
+      color: #000;
+      cursor: pointer;
+    }
+  }
+}
