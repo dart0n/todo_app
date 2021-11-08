@@ -12,7 +12,6 @@ import { API_URL } from '../../config'
 
 export function getProjects() {
   if (!localStorage.getItem('token')) return
-  console.log('here')
 
   return async (dispatch) => {
     try {
