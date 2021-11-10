@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { createTask, deleteProject, updateProject } from '../../store/actions/projects'
 import './Project.scss'
-import Task from './Task'
+import Tasks from './Tasks'
 
 export default function Project({ project }) {
   const dispatch = useDispatch()
@@ -104,9 +104,7 @@ export default function Project({ project }) {
         </button>
       </div>
 
-      <div className="project__tasks">
-        {project.tasks && project.tasks.map((task) => <Task key={task._id} task={task} />)}
-      </div>
+      <div className="project__tasks">{project.tasks && <Tasks tasks={project.tasks} />}</div>
     </div>
   )
 }

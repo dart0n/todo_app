@@ -4,15 +4,15 @@
   display: flex;
   align-items: stretch;
   min-height: 48px;
-  background: #fff;
-  border-bottom: 1px solid #e7ebea;
+  border-top: 1px solid #e7ebea;
 
-  &:hover {
-    background: $light_yellow;
-  }
-
-  &:last-child {
+  &__wrap {
+    background: #fff;
     border-radius: 0 0 15px 15px;
+
+    &:hover {
+      background: $light_yellow;
+    }
   }
 
   &__checkbox {

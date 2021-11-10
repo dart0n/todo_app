@@ -11,6 +11,7 @@ router.put('/:id', authMiddleware, ProjectsController.edit)
 router.post('/', authMiddleware, ProjectsController.create)
 router.delete('/:id', authMiddleware, ProjectsController.delete)
 
+router.get('/:project_id/tasks/:id/sort', authMiddleware, TasksController.sort)
 router.post('/:id/tasks', authMiddleware, TasksController.create)
 router.put('/:project_id/tasks/:id', authMiddleware, TasksController.edit)
 router.delete('/:project_id/tasks/:id', authMiddleware, TasksController.delete)

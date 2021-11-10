@@ -5,13 +5,12 @@ import { deleteTask, updateTask } from '../../store/actions/projects'
 import './Task.scss'
 import 'react-datepicker/dist/react-datepicker.css'
 
-export default function Task({ task }) {
+export default function Task({ task, setIsDragging }) {
   const dispatch = useDispatch()
   const [checked, setChecked] = useState(task.is_done)
   const [isEditing, setIsEditing] = useState(false)
   const [taskText, setTaskText] = useState(task.text)
   const [isHovering, setIsHovering] = useState(false)
-  const [importantPriority, setImportantPriority] = useState(false)
   const [isAddingDate, setIsAddingDate] = useState(false)
   const [date, setDate] = useState(new Date())
   const [deadline, setDeadline] = useState(null)
@@ -19,10 +18,6 @@ export default function Task({ task }) {
   useEffect(() => {
     if (checked !== task.is_done) {
       dispatch(updateTask(task, 'is_done', checked))
-    }
-
-    if (task.priority === 'Important') {
-      setImportantPriority(true)
     }
 
     if (task.deadline) {
@@ -55,16 +50,6 @@ export default function Task({ task }) {
 
       dispatch(updateTask(task, 'text', taskText))
       setIsEditing(false)
-    }
-  }
-
-  const handlePriority = () => {
-    if (importantPriority) {
-      dispatch(updateTask(task, 'priority', 'Default'))
-      setImportantPriority(false)
-    } else {
-      dispatch(updateTask(task, 'priority', 'Important'))
-      setImportantPriority(true)
     }
   }
 
@@ -107,9 +92,7 @@ export default function Task({ task }) {
             className="task__text_input"
           />
         ) : (
-          <span
-            className={`text_wrapper ${task.is_done ? 'done' : ''} ${task.priority === 'Important' ? 'important' : ''}`}
-          >
+          <span className="text_wrapper">
             <span className="text">{task.text}</span>
             {isAddingDate ? (
               <span className="datepicker">
@@ -133,8 +116,8 @@ export default function Task({ task }) {
       <div className="task__actions">
         {isHovering && (
           <>
-            <button onClick={handlePriority}>
-              <i className={`${task.priority === 'Important' ? 'fas' : 'far'} fa-star`} title="Priority"></i>
+            <button onMouseDown={() => setIsDragging(true)} onMouseUp={() => setIsDragging(false)}>
+              <i className="fas fa-arrows-alt-v" title="Move task"></i>
             </button>
             <button onClick={handleEdit}>
               <i className="fas fa-pen"></i>

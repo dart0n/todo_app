@@ -7,6 +7,7 @@ const DELETE_PROJECT = 'DELETE_PROJECT'
 const ADD_TASK = 'ADD_TASK'
 const UPDATE_TASK = 'UPDATE_TASK'
 const DELETE_TASK = 'DELETE_TASK'
+const SORT_TASKS = 'SORT_TASKS'
 
 const SET_POPUP_DISPLAY = 'SET_POPUP_DISPLAY'
 const SET_POPUP_DATE_DISPLAY = 'SET_POPUP_DISPLAY'
@@ -84,6 +85,17 @@ export default function projectsReducer(state = initialState, action) {
       updatedProjects[foundIndex] = foundProject
       return { ...state, projects: updatedProjects }
     }
+    case SORT_TASKS: {
+      const { _id } = action.payload
+
+      const foundIndex = state.projects.findIndex((p) => p._id === _id)
+      let newProjects = [...state.projects]
+      let foundProject = newProjects[foundIndex]
+
+      foundProject = action.payload
+      newProjects[foundIndex] = foundProject
+      return { ...state, projects: newProjects }
+    }
     default:
       return state
   }
@@ -99,6 +111,7 @@ export const deleteProjectAC = (id) => ({ type: DELETE_PROJECT, payload: id })
 export const addTask = (newTask) => ({ type: ADD_TASK, payload: newTask })
 export const updateTaskAC = (task) => ({ type: UPDATE_TASK, payload: task })
 export const deleteTaskAC = (task) => ({ type: DELETE_TASK, payload: task })
+export const sortTasksAC = (project) => ({ type: SORT_TASKS, payload: project })
 
 export const setPopupDisplay = (display) => ({
   type: SET_POPUP_DISPLAY,

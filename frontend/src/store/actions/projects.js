@@ -7,6 +7,7 @@ import {
   updateTaskAC,
   deleteTaskAC,
   updateProjectAC,
+  sortTasksAC,
 } from '../reducers/projectsReducer'
 import { API_URL } from '../../config'
 
@@ -108,6 +109,23 @@ export function deleteTask(task) {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
       dispatch(deleteTaskAC(task))
+    } catch (e) {
+      console.log(e)
+      alert(`Error\n${JSON.stringify(e.response?.data?.error)}`)
+    }
+  }
+}
+
+export function sortTasks(task, newOrder) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `${API_URL}/projects/${task.project_id}/tasks/${task._id}/sort?new_order=${newOrder}`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        }
+      )
+      dispatch(sortTasksAC(response.data))
     } catch (e) {
       console.log(e)
       alert(`Error\n${JSON.stringify(e.response?.data?.error)}`)

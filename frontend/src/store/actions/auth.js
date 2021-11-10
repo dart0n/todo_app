@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { API_URL } from '../../config'
-import { logout, setToken, setUser } from '../reducers/authReducer'
+import { logoutAC, setToken, setUser } from '../reducers/authReducer'
+import { setProjects } from '../reducers/projectsReducer'
 
 export function register(formFields) {
   return async (dispatch) => {
@@ -33,6 +34,18 @@ export function login(formFields) {
   }
 }
 
+export function logout() {
+  return async (dispatch) => {
+    try {
+      dispatch(logoutAC())
+      dispatch(setToken(null))
+      dispatch(setProjects([]))
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
+
 export const authenticateUser = () => {
   return async (dispatch) => {
     try {
@@ -43,7 +56,7 @@ export const authenticateUser = () => {
       dispatch(setToken(response.data.token))
     } catch (e) {
       dispatch(setToken(null))
-      dispatch(logout())
+      dispatch(logoutAC())
       localStorage.removeItem('token')
     }
   }

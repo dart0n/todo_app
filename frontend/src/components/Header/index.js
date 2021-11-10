@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { logout } from '../../store/reducers/authReducer'
+import { logout } from '../../store/actions/auth'
 import './Header.scss'
 
 export default function Header() {

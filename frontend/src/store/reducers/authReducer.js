@@ -17,7 +17,7 @@ export default function authReducer(state = initialState, action) {
       return { ...state, token: action.payload }
     case LOGOUT:
       localStorage.removeItem('token')
-      return { ...state, isAuthenticated: false, current_user: null }
+      return { ...state, isAuthenticated: false, current_user: null, token: null }
     default:
       return state
   }
@@ -26,4 +26,4 @@ export default function authReducer(state = initialState, action) {
 export const setUser = (user) => ({ type: SET_USER, payload: user })
 export const setToken = (token) => ({ type: SET_TOKEN, payload: token })
 
-export const logout = () => ({ type: LOGOUT })
+export const logoutAC = () => ({ type: LOGOUT })

@@ -3,7 +3,11 @@ const Project = require('../models/Project')
 class ProjectsController {
   async index(req, res) {
     try {
-      const projects = await Project.find({ user_id: req.user.id }).populate('tasks')
+      console.log('user id', req.user.id)
+      const projects = await Project.find({ user_id: req.user.id }).populate({
+        path: 'tasks',
+        options: { sort: 'order' },
+      })
       res.json(projects)
     } catch (e) {
       console.log(e)
@@ -13,7 +17,10 @@ class ProjectsController {
 
   async show(req, res) {
     try {
-      const project = await Project.findById(req.params.id).populate('tasks')
+      const project = await Project.findById(req.params.id).populate({
+        path: 'tasks',
+        options: { sort: 'order' },
+      })
       res.json(project)
     } catch (e) {
       res.status(404).json({ error: 'Not found' })
@@ -34,7 +41,10 @@ class ProjectsController {
 
   async edit(req, res) {
     try {
-      const project = await Project.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true }).populate('tasks')
+      const project = await Project.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true }).populate({
+        path: 'tasks',
+        options: { sort: 'order' },
+      })
       res.json(project)
     } catch (e) {
       res.status(404).json({ error: 'Not found' })
